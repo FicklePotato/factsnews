@@ -13,7 +13,11 @@ BOT_NAME = 'winuser'
 SPIDER_MODULES = ['scriprap.spiders']
 NEWSPIDER_MODULE = 'scriprap.spiders'
 
-
+# Used for generating a random user-agent
+DOWNLOADER_MIDDLEWARES = {
+        'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
+        'scriprap.userAgentManager.RotateUserAgentMiddleware': 401
+    }
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
 

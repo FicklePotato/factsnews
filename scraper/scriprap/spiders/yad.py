@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-What i currently need to do to not get a cookie website:
-    use a real user agent and not scrapy's default
-    Change my ip :(
-        The blockage is by some sort of id, one of the parameters is the ip, but not all.
-        i can still view the site from my browser
-        need to understand better how cookies work
+cookie website state:
+    + Changing my ip has an effect
+    - randomising user agents seems to has no effect as well
+    There is a tiny bit of the cookie loading website at the begining, maybe while this happens there is
+     a certain transaction happening between the browser and the server, this only happens in the first page
 """
 import scrapy
 OUT_FOLDER = "/mnt/c/Users/bacon/PycharmProjects/scriprap/out"
@@ -16,7 +15,8 @@ OUT_FILE = "rent.csv"
 class YadSpider(scrapy.Spider):
     name = 'yad'
     allowed_domains = ['yad2.co.il']
-    start_urls = ['http://www.yad2.co.il/Nadlan/rent.php']
+    start_urls = ['http://www.yad2.co.il/Nadlan/rent.php', "http://www.yad2.co.il/Nadlan/sales.php",
+                  "http://www.yad2.co.il/Nadlan/sales.php?AreaID=&City=&HomeTypeID=&Page=8"]
 
     @staticmethod
     def _validate_column(col):
